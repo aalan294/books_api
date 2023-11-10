@@ -5,7 +5,6 @@ const { put } = require('./Routes/bookRoutes')
 const cors = require('cors')
 
 const PORT = process.env.PORT ||3400
-const mongodbURL = process.env.mongodbURL
 const app = express()
 
 app.use((req,res,next)=>{
@@ -23,7 +22,7 @@ app.use('/',require('./Routes/bookRoutes'))
 
 
 const main = async()=>{
-    await mongoose.connect(mongodbURL).then(()=>{
+    await mongoose.connect('mongodb+srv://aalan_29_4:Twoninefour_294@bookcluster.7hoggwj.mongodb.net/book-collection?retryWrites=true&w=majority').then(()=>{
         console.log("successfully connected to database")
         app.listen(PORT,()=>{
             console.log(`listening to port ${PORT}`)
